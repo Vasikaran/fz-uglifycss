@@ -4,13 +4,13 @@
 ## Installation
   ```sh
     npm install --save fz-uglifycss // to install locally
-    
+
     npm install -g --save fz-uglifycss // to install globally
   ```
 ## API Reference
   ```js
   import minify from 'fz-uglifycss'; // in es6
-  
+
   let css = `body{
     background: red;
   }`;
@@ -30,7 +30,7 @@
 * Type1 - `source content only` - `minify('body{ backgroung: red }')`
 * Type2 - `a single source path as string and option {isPath: true}` - `minify('./src/path', {isPath: true})`
 * Type3 - `source path as array and option {isPath: true}` - `minify(['./src/path1', './src/path2'], {isPath: true})`
-  
+
   `Here is yours examples`
   [Examples](./example/example.js)
 
@@ -50,14 +50,14 @@ You can use `fz-uglifycss` in CLI.
   }
 
   ```
-  
+
 |Params|Description|
 |:---:|:---:|
 |`-s`|`This is means source directory`
 |`-d`|`This is means designation directory`
 |`-h or -help`|`For help`
 
-## My minification rule
+## My minification rules
 
   * Remove commented lines
   * Remove line breaks
