@@ -6,7 +6,7 @@
     npm install --save fz-uglifycss
   ```
 
- ## API Reference
+## API Reference
   ```js
     import minify from 'fz-uglifycss'; // in es6
 
@@ -21,22 +21,22 @@
   ```
   [Example](./example/example.js)
 
-  ## CLI Reference
+## CLI Reference
   ```sh
     fz-uglifycss -s src -d lib // in command line
   ```
-  
+
   ```json
     // in package.json
-   
+
     {
       "scripts": {
         "build:css": "fz-uglifycss -s src -d lib"
       }
     }
-    
+
   ```
 
-  ## Conclusion
+## Conclusion
 
     Tell your thoughts and face any bug assign that on Issuses.
