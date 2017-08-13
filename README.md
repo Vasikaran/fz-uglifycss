@@ -8,7 +8,7 @@
 
  ## API Reference
   ```js
-    import { minify } from 'fz-uglifycss'; // in es6
+    import minify from 'fz-uglifycss'; // in es6
 
     let css = `body{
       background: red;
@@ -22,7 +22,20 @@
   [Example](./example/example.js)
 
   ## CLI Reference
-    Will implement
+  ```sh
+    fz-uglifycss -s src -d lib // in command line
+  ```
+  
+  ```json
+    // in package.json
+   
+    {
+      "scripts": {
+        "build:css": "fz-uglifycss -s src -d lib"
+      }
+    }
+    
+  ```
 
   ## Conclusion
 
