@@ -9,22 +9,38 @@ var args = process.argv.splice(2, process.argv.length);
 var srcPath, desPath;
 if(args[0] === '-s'){
     srcPath = args[1];
+}else if (args[0] === '-d'){
+    desPath = args[1];
 }
 
 if (args[2] === '-d'){
     desPath = args[3];
+}else if (args[0] === '-s'){
+    srcPath = args[3];
+}
+
+if (args[0] === '-h'){
+    log('Options:', true);
+    log('   -s        - source path       ', false);
+    log('for source path', true);
+    log('   -d        - designation path  ');
+    log('for designation path', true);
+    log('   -h, -help - help              ');
+    log('for help', true);
+    process.exit();
 }
 
 var appPath = fs.realpathSync(process.cwd());
 
-function log(info){
-    process.stdout.write(info + '\n');
+function log(info, wantNextLine){
+    info += wantNextLine ? '\n' : '';
+    process.stdout.write(info);
 }
 
 function minifyCss(srcPath, targetPath){
     let minifiedCss = uglifycss(srcPath, {isPath: true});
     fs.writeFileSync(targetPath, minifiedCss);
-    log(srcPath + ' -> ' + targetPath);
+    log(srcPath + ' -> ' + targetPath, true);
 }
 
 function iterateDirectory(srcPath, targetPath){
@@ -45,7 +61,9 @@ function iterateDirectory(srcPath, targetPath){
     })
 }
 
-srcPath = path.resolve(appPath, srcPath);
+if (srcPath){
+    srcPath = path.resolve(appPath, srcPath);
+}
 
 if (fs.existsSync(srcPath) && desPath){
     desPath = path.resolve(appPath, desPath);
