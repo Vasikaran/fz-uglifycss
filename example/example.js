@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path');
-const {minify} = require('../lib/index');
+const minify = require('../lib/index');
+
+console.log(minify);
 
 let css = fs.readFileSync('./sample.css').toString();
 
