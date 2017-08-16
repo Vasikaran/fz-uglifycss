@@ -1,11 +1,12 @@
 {
   "name": "fz-uglifycss",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "for minify css files",
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "prepublish": "npm run build"
+    "build:clean": "node cleanCli.js",
+    "prepublish": "npm run build && npm run build:clean"
   },
   "babel": {
     "presets": [
@@ -17,7 +18,7 @@
     "babel-preset-es2015": "^6.24.1"
   },
   "bin":{
-    "fz-uglifycss": "./bin/build.js"
+    "fz-uglifycss": "./bin/build-lib.js"
   },
   "repository": {
     "type": "git",
