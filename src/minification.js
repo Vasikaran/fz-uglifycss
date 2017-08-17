@@ -5,19 +5,23 @@ let minification = (css)=>{
     let isComment = false;
     lines.forEach((line, lineIndex)=>{
         line = line.split('\r')[0];
-        let isColon = false;
-        let isSemiColon = false;
         let cleanLine = line.replace(/\s+/g, "");
-        if (cleanLine.startsWith('/*') || cleanLine.startsWith('*/')){
+        let lineHasComment = false;
+        if (cleanLine.indexOf('/*') !== -1){
             isComment = true;
-        }else if (cleanLine.endsWith('*/')){
-            isComment = false;
+            line = line.split('/*')[0] ? line.split('/*')[0] : '';
+            lineHasComment = true;
+        }
+        if (cleanLine.indexOf('*/') !== -1){
+            isComment = true;
+            line = line.split('*/')[1] ? line.split('*/')[1] : '';
+            lineHasComment = true;
         }
         let addRaw, isMedia = false;
-        if (cleanLine.startsWith('@media')){
+        if (cleanLine.indexOf('@media') !== -1 && !isComment){
             isMedia = true;
         }
-        if (!isComment){
+        if (!isComment || lineHasComment){
             let count = 0;
             for (let char of line){
                 let subStr = line.substr(count + 1, line.length);
