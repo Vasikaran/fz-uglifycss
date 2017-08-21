@@ -1,6 +1,8 @@
+@@charset "UTF-8";
+
 body        {
     background: red;
-    border: 2px solid black;
+    border: 2px solid black, white, blue;
     background-color: green !important;
 }
 

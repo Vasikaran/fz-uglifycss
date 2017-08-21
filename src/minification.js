@@ -32,6 +32,7 @@ let removeWhiteSpaces = (content)=>{
     cleanLines = cleanLines.replace(/\t/g, '');
     cleanLines = cleanLines.replace(/;}/g, '}');
     cleanLines = cleanLines.replace(/\s!/g, '!');
+    cleanLines = cleanLines.replace(/(\s,|,\s)/g, ',');
     cleanLines = cleanLines.replace(/(\s:|:\s)/g, ':');
     return cleanLines;
 };
