@@ -1,6 +1,6 @@
 {
   "name": "fz-uglifycss",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "for minify css files",
   "main": "./lib/index.js",
   "scripts": {
