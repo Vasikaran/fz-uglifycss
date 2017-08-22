@@ -1,11 +1,5 @@
 let removeComments = (content)=>{
-    let lines = content.split('*/');
-    let cleanLines = '';
-    lines.forEach(line=>{
-        line = line.replace(/(\*.*|\/)/g, '');
-        cleanLines += line;
-    })
-    return cleanLines;
+    return content.replace(/\/\*([\s\S]*?)\*\//g, '');
 }
 
 let removeWhiteSpaces = (content)=>{

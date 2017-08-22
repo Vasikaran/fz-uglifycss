@@ -19,6 +19,9 @@ if (args[2] === '-d'){
     srcPath = args[3];
 }
 
+var originPath = srcPath;
+var endPath = desPath;
+
 if (args[0] === '-h'){
     log('Options:', true);
     log('   -s        - source path       ', false);
@@ -40,22 +43,25 @@ function log(info, wantNextLine){
 function minifyCss(srcPath, targetPath){
     let minifiedCss = uglifycss(srcPath, {isPath: true});
     fs.writeFileSync(targetPath, minifiedCss);
-    log(srcPath + ' -> ' + targetPath, true);
+    return true;
 }
 
-function iterateDirectory(srcPath, targetPath){
-    fs.readdirSync(srcPath).forEach((fileOrDir)=>{
-        let fromPath = path.join(srcPath, fileOrDir);
+function iterateDirectory(contentPath, targetPath, dirName){
+    dirName = dirName ? dirName : '';
+    fs.readdirSync(contentPath).forEach((fileOrDir)=>{
+        let fromPath = path.join(contentPath, fileOrDir);
         let toPath = path.join(targetPath, fileOrDir);
         if(fs.statSync(fromPath).isDirectory()){
             if (!fs.existsSync(toPath)){
                 fs.mkdirSync(toPath);
             }
-            iterateDirectory(fromPath, toPath);
+            iterateDirectory(fromPath, toPath, dirName + '/' + fileOrDir);
         }else{
             let { name, ext } = path.parse(fileOrDir);
             if (ext === '.css'){
-                minifyCss(fromPath, toPath);
+                if(minifyCss(fromPath, toPath)){
+                    log(path.join(originPath, dirName, name + ext) + ' -> ' + path.join(endPath, dirName, name + ext), true);
+                }
             }
         }
     })
