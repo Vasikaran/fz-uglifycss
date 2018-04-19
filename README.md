@@ -1,4 +1,6 @@
 # Fz Uglify CSS
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Vasikaran/fz-uglifycss.svg)](https://greenkeeper.io/)
   Fz Uglify CSS is a CSS parser which is minify your CSS files.
 
 ## Installation
